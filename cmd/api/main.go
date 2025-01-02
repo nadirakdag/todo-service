@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/nadirakdag/todo-service/internal/config"
+	"github.com/nadirakdag/todo-service/pkg/database"
 	"log"
 )
 
@@ -14,5 +15,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(cfg)
+	db, err := database.NewPostgresDB(cfg.Database)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(db)
 }
