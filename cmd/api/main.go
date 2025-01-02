@@ -1,7 +1,18 @@
-package api
+package main
 
-import "fmt"
+import (
+	"fmt"
+	"github.com/nadirakdag/todo-service/internal/config"
+	"log"
+)
 
 func main() {
-	fmt.Println("starting api")
+
+	log.Println("loading config")
+	cfg, err := config.LoadConfig()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(cfg)
 }
